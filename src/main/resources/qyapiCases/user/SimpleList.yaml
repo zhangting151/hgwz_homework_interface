@@ -1,0 +1,67 @@
+#验证不传fetch_child时，查询结果中不包括子部门的成员，即fetch_child默认为0
+- description: "验证不传fetch_child时，查询结果中不包括子部门的成员，即fetch_child默认为0"
+  given:
+    params:
+    -  key: "department_id"
+       value: "1"
+    headers:
+    - key: "Content-Type"
+      value: "application/json; charset=UTF-8"
+  when:
+    request: "get"
+    url: "https://qyapi.weixin.qq.com/cgi-bin/user/simplelist?access_token="
+  then:
+    statusCode: 200
+    body:
+      - key: "errcode"
+        value: "equalTo 0"
+      - key: "userlist.userid"
+        value: "hasItem ZhangTing"
+      - key: "userlist"
+        value: "notHasItem mobile"
+#验证fetch_child传0时，查询结果中不包括子部门的成员
+- description: "验证fetch_child传0时，查询结果中不包括子部门的成员"
+  given:
+    params:
+    -  key: "department_id"
+       value: "1"
+    -  key: "fetch_child"
+       value: "0"
+    headers:
+    - key: "Content-Type"
+      value: "application/json; charset=UTF-8"
+  when:
+    request: "get"
+    url: "https://qyapi.weixin.qq.com/cgi-bin/user/simplelist?access_token="
+  then:
+    statusCode: 200
+    body:
+      - key: "errcode"
+        value: "equalTo 0"
+      - key: "userlist.userid"
+        value: "notHasItem kaifa_01"
+      - key: "userlist.userid"
+        value: "hasItem ZhangTing"
+#验证fetch_child传1时，查询结果中包括子部门的成员
+- description: "验证fetch_child传1时，查询结果中包括子部门的成员"
+  given:
+    params:
+    -  key: "department_id"
+       value: "1"
+    -  key: "fetch_child"
+       value: "1"
+    headers:
+    - key: "Content-Type"
+      value: "application/json; charset=UTF-8"
+  when:
+    request: "get"
+    url: "https://qyapi.weixin.qq.com/cgi-bin/user/simplelist?access_token="
+  then:
+    statusCode: 200
+    body:
+      - key: "errcode"
+        value: "equalTo 0"
+      - key: "userlist.userid"
+        value: "hasItem kaifa_01"
+      - key: "userlist.userid"
+        value: "hasItem ZhangTing"

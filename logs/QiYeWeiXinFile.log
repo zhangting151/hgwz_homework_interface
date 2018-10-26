@@ -1,0 +1,7 @@
+[INFO ] [10-27 07:05:57] QiYeWeiXin 26 - QiYeWeiXin before ~
+[INFO ] [10-27 07:06:00] QiYeWeiXin 40 - access_token:LLNEcIaakRYOGDCBGt2SvCGey8ShZ3eSyrc_3LSixOMA34JCDgyHFRsYXXcvJnssW5fh71bmWEmFFg7WY3H5s9Fzt3G8wozpMHnH73aI3yKlOPkKC0aYO4SlEsm1QmVkJxbynPycskoalHMh164Z0tCo6hm2PZy1udA5DlUTGioO1cYvf07sbwDPfw4V5e1TkpRPgvLNg58aVBMk4lY0ow
+[INFO ] [10-27 07:06:00] QiYeWeiXin 12 - department before~
+[INFO ] [10-27 07:06:00] QiYeWeiXin 34 - 当前测试接口为/department/list
+[INFO ] [10-27 07:06:00] QiYeWeiXin 89 - id为1时，返回所有部门
+[INFO ] [10-27 07:06:00] QiYeWeiXin 34 - 当前测试接口为/department/list
+[INFO ] [10-27 07:06:00] QiYeWeiXin 89 - id为2时，只返回技术部

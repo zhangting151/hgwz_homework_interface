@@ -1,0 +1,20 @@
+- description: "本意是想添加用户的，结果一直报60112，没找到解决办法"
+  given:
+    params:
+    -  key: "userid"
+       value: "kaifa0001"
+    -  key: "name"
+       value: "kaifa0001"
+    -  key: "department"
+       value: "1"
+    headers:
+    - key: "Content-Type"
+      value: "application/json; charset=UTF-8"
+  when:
+    request: "post"
+    url: "https://qyapi.weixin.qq.com/cgi-bin/user/create?access_token="
+  then:
+    statusCode: 200
+    body:
+      - key: "errcode"
+        value: "equalTo 60112"

@@ -1,0 +1,40 @@
+- description: "id为1时，返回所有部门"
+  given:
+    params:
+    -  key: "id"
+       value: "1"
+    headers:
+    - key: "Content-Type"
+      value: "application/json; charset=UTF-8"
+  when:
+    request: "get"
+    url: "https://qyapi.weixin.qq.com/cgi-bin/department/list?access_token="
+  then:
+    statusCode: 200
+    body:
+      - key: "errcode"
+        value: "equalTo 0"
+      - key: "department.name"
+        value: "hasItems 技术部"
+      - key: "department.name"
+        value: "hasItems IT"
+- description: "id为2时，只返回技术部"
+  given:
+    params:
+    -  key: "id"
+       value: "2"
+    headers:
+    - key: "Content-Type"
+      value: "application/json; charset=UTF-8"
+  when:
+    request: "get"
+    url: "https://qyapi.weixin.qq.com/cgi-bin/department/list?access_token="
+  then:
+    statusCode: 200
+    body:
+      - key: "errcode"
+        value: "equalTo 0"
+      - key: "department.name"
+        value: "hasItems 技术部"
+      - key: "department.name"
+        value: "notHasItems IT"

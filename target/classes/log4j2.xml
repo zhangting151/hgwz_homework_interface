@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="warn">
+    <Properties>
+        <Property name="logDir">logs</Property>
+    </Properties>
+
+    <appenders>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%-5p] [%d{MM-dd HH:mm:ss}] %c %L - %m%n" />
+        </Console>
+
+        <!--fileName中如果使用相对路径，则是相对于工程路径。这里是 工程路径/log/test1/test1.log -->
+        <File name="QiYeWeiXinFile" fileName="${logDir}/QiYeWeiXinFile.log"
+              append="false">
+            <PatternLayout pattern="[%-5p] [%d{MM-dd HH:mm:ss}] %c %L - %m%n" />
+        </File>
+    </appenders>
+
+    <loggers>
+        <Logger name="QiYeWeiXin" additivity="TRUE"
+                level="ALL">
+            <AppenderRef ref="QiYeWeiXinFile" level="ALL" />
+        </Logger>
+        <Root level="info">
+            <AppenderRef ref="STDOUT" />
+        </Root>
+    </loggers>
+</configuration>
